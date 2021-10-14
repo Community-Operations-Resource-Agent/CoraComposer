@@ -106,7 +106,7 @@ namespace Shared.Middleware
             }
 
             // Translate messages sent to the user to the user's language.
-            if (userProfile.Language != Translator.DefaultLanguage)
+            if (userProfile.Language != null && userProfile.Language != Translator.DefaultLanguage)
             {
                 List<Task> tasks = new List<Task>();
                 foreach (Activity currentActivity in activities.Where(a => a.Type == ActivityTypes.Message))

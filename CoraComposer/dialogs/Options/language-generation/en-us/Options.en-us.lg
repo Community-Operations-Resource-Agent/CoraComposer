@@ -1,0 +1,18 @@
+[import](common.lg)
+
+# SendActivity_HweLvK()
+[Activity
+    Text = ${SendActivity_HweLvK_text()}
+    SuggestedActions = Register a need | Register resources | More options
+]
+
+# SendActivity_HweLvK_text()
+- How can I help? Choose from the following or ask a question
+# TextInput_Prompt_RbBCEr()
+[Activity
+    Text = ${TextInput_Prompt_RbBCEr_text()}
+    SuggestedActions = Update your location | Change the days that ${settings.ProjectName} will contact you for updates | Change the time that ${settings.ProjectName} will contact you for updates | Enable ${settings.ProjectName} to contact you | Stop ${settings.ProjectName} from contacting you | Change your language | Provide feedback | Go back to the main menu
+]
+
+# TextInput_Prompt_RbBCEr_text()
+- Let me know what you'd like to do.

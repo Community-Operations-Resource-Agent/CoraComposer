@@ -1,0 +1,128 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "ojLITQ",
+    "name": "Location",
+    "comment": ""
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "N94Q5u"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.TextInput",
+          "$designer": {
+            "id": "3jh9E7"
+          },
+          "disabled": false,
+          "maxTurnCount": 3,
+          "alwaysPrompt": false,
+          "allowInterruptions": false,
+          "prompt": "${TextInput_Prompt_3jh9E7()}",
+          "unrecognizedPrompt": "",
+          "invalidPrompt": "",
+          "defaultValueResponse": ""
+        },
+        {
+          "$kind": "Microsoft.SetProperty",
+          "$designer": {
+            "id": "vRWJiB"
+          },
+          "property": "dialog.requestUrl",
+          "value": "=replace(replace(settings.Maps.SearchUrlFormat, '{0}', settings.Maps.SubscriptionKey), '{1}', turn.activity.text)"
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "ee0R4F"
+          },
+          "resultProperty": "turn.results",
+          "method": "GET",
+          "url": "=dialog.requestUrl"
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "ym7gcL"
+          },
+          "condition": "=turn.results.statusCode != 200 || turn.results.content.summary.numResults == 0",
+          "actions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "C7l4Df"
+              },
+              "activity": "${SendActivity_C7l4Df()}"
+            },
+            {
+              "$kind": "Microsoft.RepeatDialog",
+              "$designer": {
+                "id": "gE6iZB"
+              },
+              "activityProcessed": true
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.SetProperties",
+          "$designer": {
+            "id": "SZN6dR"
+          },
+          "assignments": [
+            {
+              "property": "user.location",
+              "value": "=concat(turn.results.content.results[0].address.municipality, ', ', turn.results.content.results[0].address.countrySubdivision)"
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "1iWxyJ"
+          },
+          "activityProcessed": true,
+          "dialog": "Confirm",
+          "options": {
+            "prompt": "I matched your city to \"${user.location}\". Is this correct?"
+          },
+          "resultProperty": "turn.isCorrect"
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "x6ND50"
+          },
+          "condition": "=turn.isCorrect",
+          "elseActions": [
+            {
+              "$kind": "Microsoft.RepeatDialog",
+              "$designer": {
+                "id": "I5fRDU"
+              },
+              "activityProcessed": true
+            }
+          ],
+          "actions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "1FwKFw"
+              },
+              "activity": "${SendActivity_1FwKFw()}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generator": "Location.lg",
+  "recognizer": "Location.lu.qna",
+  "id": "Location"
+}

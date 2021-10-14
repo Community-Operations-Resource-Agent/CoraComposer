@@ -1,0 +1,60 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "ETWEDF",
+    "name": "Options",
+    "comment": ""
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "Lh4qgO"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "HweLvK"
+          },
+          "activity": "${SendActivity_HweLvK()}"
+        },
+        {
+          "$kind": "Microsoft.SwitchCondition",
+          "$designer": {
+            "id": "vmf717"
+          },
+          "condition": "turn.activity.text",
+          "cases": [
+            {
+              "value": "More options",
+              "actions": [
+                {
+                  "$kind": "Microsoft.TextInput",
+                  "$designer": {
+                    "id": "RbBCEr"
+                  },
+                  "disabled": false,
+                  "maxTurnCount": 3,
+                  "alwaysPrompt": false,
+                  "allowInterruptions": false,
+                  "prompt": "${TextInput_Prompt_RbBCEr()}",
+                  "unrecognizedPrompt": "",
+                  "invalidPrompt": "",
+                  "defaultValueResponse": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generator": "Options.lg",
+  "recognizer": "Options.lu.qna",
+  "id": "Options"
+}

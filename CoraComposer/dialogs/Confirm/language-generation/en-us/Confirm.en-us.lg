@@ -1,0 +1,25 @@
+[import](common.lg)
+
+# SendActivity_QKEwVj()
+[Activity
+    Text = ${SendActivity_QKEwVj_text()}
+]
+
+# TextInput_Prompt_dEUeY6()
+[Activity
+    Text = ${dialog.prompt}
+    Speak = ${TextInput_Prompt_dEUeY6_speak()}
+    SuggestedActions = Yes | No
+]
+
+# TextInput_InvalidPrompt_dEUeY6()
+[Activity
+    Text = I’m sorry I didn't get that. Could you please respond with Yes or No?
+    SuggestedActions = Yes | No
+]
+
+# TextInput_Prompt_dEUeY6_speak()
+- ${dialog.speak}
+
+# SendActivity_QKEwVj_text()
+- I’m having a hard time understanding your request.

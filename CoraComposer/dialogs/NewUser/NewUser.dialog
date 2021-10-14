@@ -1,0 +1,86 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "EdY5nW",
+    "name": "NewUser",
+    "comment": ""
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "ibiFq6"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "cKTM7d"
+          },
+          "activityProcessed": true,
+          "dialog": "Confirm",
+          "options": {
+            "prompt": "Hi, I'm ${settings.ProjectName}, a bot helping to locate critical supplies in case of an emergency. Message and data rates apply. Would you like to continue?"
+          },
+          "resultProperty": "dialog.consentGiven"
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "LuJuw3"
+          },
+          "condition": "=dialog.consentGiven",
+          "elseActions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "3BQ83E"
+              },
+              "activity": "${SendActivity_3BQ83E()}"
+            }
+          ],
+          "actions": [
+            {
+              "$kind": "Microsoft.SetProperty",
+              "$designer": {
+                "id": "NLVp7X"
+              },
+              "property": "user.IsConsentGiven",
+              "value": "=bool(1)"
+            },
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "TrrdHi"
+              },
+              "activity": "${SendActivity_TrrdHi()}"
+            },
+            {
+              "$kind": "Microsoft.BeginDialog",
+              "$designer": {
+                "id": "vsTv01"
+              },
+              "activityProcessed": true,
+              "dialog": "Location"
+            },
+            {
+              "$kind": "Microsoft.BeginDialog",
+              "$designer": {
+                "id": "y90vLp"
+              },
+              "activityProcessed": true,
+              "dialog": "Options"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generator": "NewUser.lg",
+  "recognizer": "NewUser.lu.qna",
+  "id": "NewUser"
+}

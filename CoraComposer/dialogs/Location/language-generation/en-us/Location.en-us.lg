@@ -1,0 +1,23 @@
+[import](common.lg)
+
+# TextInput_Prompt_3jh9E7()
+[Activity
+    Text = ${TextInput_Prompt_3jh9E7_text()}
+]
+
+# TextInput_Prompt_3jh9E7_text()
+- Where are you located? (enter ZipCode, Country)
+# SendActivity_C7l4Df()
+[Activity
+    Text = ${SendActivity_C7l4Df_text()}
+]
+
+# SendActivity_C7l4Df_text()
+- Oops, I couldn't find that location. Please try again...
+# SendActivity_1FwKFw()
+[Activity
+    Text = ${SendActivity_1FwKFw_text()}
+]
+
+# SendActivity_1FwKFw_text()
+- Your location has been updated!

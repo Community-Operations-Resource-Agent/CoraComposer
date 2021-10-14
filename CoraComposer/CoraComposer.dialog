@@ -31,12 +31,12 @@
               "condition": "string(dialog.foreach.value.id) != string(turn.Activity.Recipient.id)",
               "actions": [
                 {
-                  "$kind": "Microsoft.SendActivity",
+                  "$kind": "Microsoft.BeginDialog",
                   "$designer": {
-                    "id": "859266",
-                    "name": "Send a response"
+                    "id": "LeyQnL"
                   },
-                  "activity": "${SendActivity_Greeting()}"
+                  "activityProcessed": true,
+                  "dialog": "NewUser"
                 }
               ]
             }
@@ -53,9 +53,9 @@
         {
           "$kind": "Microsoft.SendActivity",
           "$designer": {
-            "id": "kMjqz1"
+            "id": "OZVcHx"
           },
-          "activity": "${SendActivity_DidNotUnderstand()}"
+          "activity": "${SendActivity_OZVcHx()}"
         }
       ]
     }

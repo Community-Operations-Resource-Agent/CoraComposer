@@ -1,0 +1,16 @@
+[import](common.lg)
+
+# SendActivity_3BQ83E()
+[Activity
+    Text = ${SendActivity_3BQ83E_text()}
+]
+
+# SendActivity_3BQ83E_text()
+- No problem! You can message me any time if you change your mind
+# SendActivity_TrrdHi()
+[Activity
+    Text = ${SendActivity_TrrdHi_text()}
+]
+
+# SendActivity_TrrdHi_text()
+- Great! As detailed on ${settings.ProjectWebsite}, my job is to locate critical supplies in case of an emergency and notify you if they are needed by local healthcare facilities. Throughout this process I will protect your privacy and not share your phone number.

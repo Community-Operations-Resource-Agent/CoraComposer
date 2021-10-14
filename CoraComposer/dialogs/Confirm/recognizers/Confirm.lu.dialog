@@ -1,0 +1,8 @@
+{
+  "$kind": "Microsoft.MultiLanguageRecognizer",
+  "id": "LUIS_Confirm",
+  "recognizers": {
+    "en-us": "Confirm.en-us.lu",
+    "": "Confirm.en-us.lu"
+  }
+}

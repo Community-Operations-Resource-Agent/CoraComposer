@@ -1,0 +1,92 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "puYJlM",
+    "name": "Confirm",
+    "description": "Reusable Yes or No prompt with parameters"
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "HGaoY7"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.TextInput",
+          "$designer": {
+            "id": "dEUeY6"
+          },
+          "disabled": false,
+          "maxTurnCount": 3,
+          "alwaysPrompt": true,
+          "allowInterruptions": false,
+          "unrecognizedPrompt": "",
+          "value": "=turn.recognized.intent",
+          "property": "turn.choice",
+          "prompt": "${TextInput_Prompt_dEUeY6()}",
+          "validations": [
+            "or(greaterOrEquals(turn.recognized.intents.Confirm.score, 0.9), greaterOrEquals(turn.recognized.intents.Reject.score, 0.9))"
+          ],
+          "invalidPrompt": "${TextInput_InvalidPrompt_dEUeY6()}"
+        },
+        {
+          "$kind": "Microsoft.SwitchCondition",
+          "$designer": {
+            "id": "yL63Jn"
+          },
+          "condition": "turn.choice",
+          "cases": [
+            {
+              "value": "Confirm",
+              "actions": [
+                {
+                  "$kind": "Microsoft.EndDialog",
+                  "$designer": {
+                    "id": "BD8wMt"
+                  },
+                  "value": "=bool(1)"
+                }
+              ]
+            },
+            {
+              "value": "Reject",
+              "actions": [
+                {
+                  "$kind": "Microsoft.EndDialog",
+                  "$designer": {
+                    "id": "rTgjWu"
+                  },
+                  "value": "=bool(0)"
+                }
+              ]
+            }
+          ],
+          "default": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "QKEwVj"
+              },
+              "activity": "${SendActivity_QKEwVj()}"
+            },
+            {
+              "$kind": "Microsoft.CancelAllDialogs",
+              "$designer": {
+                "id": "fO597x"
+              },
+              "activityProcessed": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generator": "Confirm.lg",
+  "recognizer": "Confirm.lu.qna",
+  "id": "Confirm"
+}

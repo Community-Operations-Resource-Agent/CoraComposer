@@ -1,16 +1,9 @@
 [import](common.lg)
 
-# SendActivity_Greeting()
+# SendActivity_OZVcHx()
 [Activity
-    Text = ${SendActivity_Greeting_text()}
+    Text = ${SendActivity_OZVcHx_text()}
 ]
 
-# SendActivity_Greeting_text()
-- Welcome to your bot. 
-# SendActivity_DidNotUnderstand()
-[Activity
-    Text = ${SendActivity_DidNotUnderstand_text()}
-]
-
-# SendActivity_DidNotUnderstand_text()
-- Your language was ${user.UserProfileState.Language}
+# SendActivity_OZVcHx_text()
+- Sorry, I didn't understand
