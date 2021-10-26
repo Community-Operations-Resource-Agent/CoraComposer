@@ -17,37 +17,116 @@
       },
       "actions": [
         {
-          "$kind": "Microsoft.SendActivity",
+          "$kind": "Microsoft.ChoiceInput",
           "$designer": {
-            "id": "HweLvK"
+            "id": "EfiC3p"
           },
-          "activity": "${SendActivity_HweLvK()}"
+          "defaultLocale": "en-us",
+          "disabled": false,
+          "maxTurnCount": 3,
+          "alwaysPrompt": false,
+          "allowInterruptions": false,
+          "unrecognizedPrompt": "",
+          "invalidPrompt": "",
+          "defaultValueResponse": "",
+          "prompt": "${ChoiceInput_Prompt_EfiC3p()}",
+          "choiceOptions": {
+            "includeNumbers": true,
+            "inlineOrMore": ", or ",
+            "inlineOr": " or ",
+            "inlineSeparator": ", "
+          },
+          "choices": [
+            "Register a need",
+            "Register resources",
+            "More options"
+          ],
+          "property": "dialog.userChoice"
         },
         {
           "$kind": "Microsoft.SwitchCondition",
           "$designer": {
             "id": "vmf717"
           },
-          "condition": "turn.activity.text",
+          "condition": "dialog.userChoice",
           "cases": [
             {
               "value": "More options",
               "actions": [
                 {
-                  "$kind": "Microsoft.TextInput",
+                  "$kind": "Microsoft.ChoiceInput",
                   "$designer": {
-                    "id": "RbBCEr"
+                    "id": "BeK9dv"
                   },
+                  "defaultLocale": "en-us",
                   "disabled": false,
                   "maxTurnCount": 3,
                   "alwaysPrompt": false,
                   "allowInterruptions": false,
-                  "prompt": "${TextInput_Prompt_RbBCEr()}",
+                  "prompt": "${ChoiceInput_Prompt_BeK9dv()}",
                   "unrecognizedPrompt": "",
                   "invalidPrompt": "",
-                  "defaultValueResponse": ""
+                  "defaultValueResponse": "",
+                  "choiceOptions": {
+                    "includeNumbers": true,
+                    "inlineOrMore": ", or ",
+                    "inlineOr": " or ",
+                    "inlineSeparator": ", "
+                  },
+                  "choices": [
+                    "Update your location",
+                    "Change the days that ${settings.ProjectName} will contact you for updates",
+                    "Change the time that ${settings.ProjectName} will contact you for updates",
+                    "Enable ${settings.ProjectName} to contact you",
+                    "Stop ${settings.ProjectName} from contacting you",
+                    "Change your language",
+                    "Provide feedback",
+                    "Go back to the main menu"
+                  ],
+                  "style": "auto",
+                  "property": "dialog.userChoiceExtended"
+                },
+                {
+                  "$kind": "Microsoft.SwitchCondition",
+                  "$designer": {
+                    "id": "3rQGvq"
+                  },
+                  "condition": "dialog.userChoiceExtended",
+                  "cases": [
+                    {
+                      "value": "Update your location",
+                      "actions": [
+                        {
+                          "$kind": "Microsoft.BeginDialog",
+                          "$designer": {
+                            "id": "K2xwAe"
+                          },
+                          "activityProcessed": true,
+                          "dialog": "Location"
+                        }
+                      ]
+                    }
+                  ],
+                  "default": [
+                    {
+                      "$kind": "Microsoft.SendActivity",
+                      "$designer": {
+                        "id": "BYrxcu"
+                      },
+                      "activity": "${SendActivity_BYrxcu()}"
+                    }
+                  ]
                 }
               ]
+            }
+          ],
+          "default": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "wUC156"
+              },
+              "activity": "${SendActivity_wUC156()}"
             }
           ]
         }

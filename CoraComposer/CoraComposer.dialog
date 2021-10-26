@@ -40,7 +40,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "value": "dialog.foreach.value"
         }
       ]
     },

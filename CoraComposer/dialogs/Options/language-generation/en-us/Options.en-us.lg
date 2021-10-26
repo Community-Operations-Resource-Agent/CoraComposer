@@ -1,18 +1,29 @@
 [import](common.lg)
 
-# SendActivity_HweLvK()
+# ChoiceInput_Prompt_BeK9dv()
 [Activity
-    Text = ${SendActivity_HweLvK_text()}
-    SuggestedActions = Register a need | Register resources | More options
+    Text = ${ChoiceInput_Prompt_BeK9dv_text()}
 ]
 
-# SendActivity_HweLvK_text()
-- How can I help? Choose from the following or ask a question
-# TextInput_Prompt_RbBCEr()
-[Activity
-    Text = ${TextInput_Prompt_RbBCEr_text()}
-    SuggestedActions = Update your location | Change the days that ${settings.ProjectName} will contact you for updates | Change the time that ${settings.ProjectName} will contact you for updates | Enable ${settings.ProjectName} to contact you | Stop ${settings.ProjectName} from contacting you | Change your language | Provide feedback | Go back to the main menu
-]
-
-# TextInput_Prompt_RbBCEr_text()
+# ChoiceInput_Prompt_BeK9dv_text()
 - Let me know what you'd like to do.
+# ChoiceInput_Prompt_EfiC3p()
+[Activity
+    Text = ${ChoiceInput_Prompt_EfiC3p_text()}
+]
+
+# ChoiceInput_Prompt_EfiC3p_text()
+- How can I help? Choose from the following or ask a question
+# SendActivity_wUC156()
+[Activity
+    Text = ${SendActivity_wUC156_text()}
+]
+
+# SendActivity_wUC156_text()
+- You've selected ${dialog.userChoice}
+# SendActivity_BYrxcu_text()
+- You've selected ${dialog.userChoiceExtended}
+# SendActivity_BYrxcu()
+[Activity
+    Text = ${SendActivity_BYrxcu_text()}
+]
